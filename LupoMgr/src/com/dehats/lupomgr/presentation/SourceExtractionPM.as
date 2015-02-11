@@ -22,6 +22,8 @@ package com.dehats.lupomgr.presentation
 		public static const EVENT_END_OF_EXTRACTION:String="endOfExtraction";
 
 		public static var prefixKeyWithFilename:Boolean=false;
+		
+		public static var filenameSearchPattern:RegExp=/.*/;
 
 		public static var defaultDefaultReplacements:Array=[
 												{label:"AS3", data:"ResourceManager.getInstance().get[TYPE]('[BUNDLE]', '[KEY]')"},
@@ -105,7 +107,7 @@ package com.dehats.lupomgr.presentation
 			{
 				var f:File = list[i];
 				if(f.isDirectory) getFileListRecurs(f, pBigList);
-				else if(f.extension=="mxml" || f.extension=="as") pBigList.push(f);
+				else if((f.extension=="mxml" || f.extension=="as") && filenameSearchPattern.test(f.name)) pBigList.push(f);
 			}				
 			
 		}			

@@ -21,7 +21,7 @@ package com.dehats.lupomgr.model
 	public class Config
 	{
 
-		public static const ELS_SEARCH_PATTERNS:String="searchPatterns";// 0:MXML, 1 : AS3		
+		public static const ELS_SEARCH_PATTERNS:String="searchPatterns";// 0:MXML, 1:AS3, 2:Filename	
 		public static const ELS_BLANK_LINE:String="addBlankLine";
 		public static const ELS_REPLACEMENTS:String="codereplacement";//0:MXML, 1:AS3, 2:AS3INMXML
 		public static const ELS_KEY_PREFIX:String="useKeyPrefix";
@@ -32,6 +32,7 @@ package com.dehats.lupomgr.model
 		
 		public var mxmlSearchPattern:String;
 		public var as3SearchPattern:String;
+		public var filenameSearchPattern:String;
 		public var addBlankLine:Boolean;
 		public var replaceMxml:String;
 		public var replaceAS3:String;
@@ -62,6 +63,7 @@ package com.dehats.lupomgr.model
 				var searchPatternTab:Array = searchPatternsBytes.readObject() as Array;
 				mxmlSearchPattern = searchPatternTab[0];
 				as3SearchPattern = searchPatternTab[1];
+				filenameSearchPattern = searchPatternTab[2];
 			} 			
 			
 			if(blankLineValue==null) addBlankLine=false;
@@ -95,12 +97,14 @@ package com.dehats.lupomgr.model
 			SourceExtractionPM.defaultReplacements[2].data = replaceAS3;
 			
 			SourceExtractionPM.prefixKeyWithFilename = useKeyPrefix;
+			SourceExtractionPM.filenameSearchPattern = new RegExp(filenameSearchPattern, "gi");;
 		}
 
 		public function defaultPatterns():void
 		{			
 			mxmlSearchPattern = ExtractableSource.DEFAULT_MXML_SEARCH.source;				
 			as3SearchPattern = ExtractableSource.DEFAULT_CODE_SEARCH.source;
+			filenameSearchPattern = ExtractableSource.DEFAULT_FILENAME_SEARCH.source;
 		}
 
 		public function defaultReplacements():void
@@ -115,7 +119,7 @@ package com.dehats.lupomgr.model
 		{
 			// patterns
 			var searchPatternBytes:ByteArray = new ByteArray();
-			searchPatternBytes.writeObject([mxmlSearchPattern, as3SearchPattern]);
+			searchPatternBytes.writeObject([mxmlSearchPattern, as3SearchPattern, filenameSearchPattern]);
 			EncryptedLocalStore.setItem(ELS_SEARCH_PATTERNS, searchPatternBytes);
 						
 			// blank line

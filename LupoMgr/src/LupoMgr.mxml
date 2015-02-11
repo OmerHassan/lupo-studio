@@ -45,22 +45,19 @@
 	
 	<mx:Script>
 		<![CDATA[
-			import com.dehats.lupomgr.view.PreferenceWin;
-			import com.dehats.lupo.view.LicenseRegistrationWin;
-			import com.dehats.lupo.presentation.AssetManager;
-			import com.dehats.lupomgr.view.NewLanguageDialog;
-			import com.dehats.lupomgr.presentation.MainPM;			
-			import com.dehats.lupomgr.presentation.SourceExtractionPM;
-			import com.dehats.lupomgr.presentation.MasterFilePanelPM;
-			import com.dehats.lupomgr.view.SourceExtraction;
-			import com.dehats.lupomgr.view.ExportForTranslationDialog;			
-			import com.dehats.lupomgr.view.NewProjectDialog;
-			import com.dehats.lupo.view.FilePreview;
 			import com.dehats.lupo.model.PropFile;
-			import mx.events.CloseEvent;			
-			import mx.controls.Alert;
-			import mx.managers.PopUpManager; 
-			import mx.containers.TitleWindow;
+			import com.dehats.lupo.presentation.AssetManager;
+			import com.dehats.lupo.view.FilePreview;
+			import com.dehats.lupo.view.LicenseRegistrationWin;
+			import com.dehats.lupomgr.presentation.MainPM;
+			import com.dehats.lupomgr.view.ExportForTranslationDialog;
+			import com.dehats.lupomgr.view.NewLanguageDialog;
+			import com.dehats.lupomgr.view.NewProjectDialog;
+			import com.dehats.lupomgr.view.PreferenceWin;
+			import com.dehats.lupomgr.view.SourceExtraction;
+			
+			import mx.events.CloseEvent;
+			import mx.managers.PopUpManager;
 			
 			
 			[Bindable]

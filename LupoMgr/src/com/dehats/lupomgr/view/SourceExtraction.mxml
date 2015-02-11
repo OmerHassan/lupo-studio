@@ -38,7 +38,7 @@
 				pm.sourceTa = sourceTa;
 								
 				// automatically get the first string (we have to use callLater because the extraction canvas is not ready at this stage)
-				if(pm.source.searchIndex==-1) callLater(pm.findNext);
+				if(pm.source && pm.source.searchIndex==-1) callLater(pm.findNext);
 				
 				sourceTa.setFocus();
 			}

@@ -31,6 +31,7 @@
 			{
 				config.mxmlSearchPattern = mxmlPatTi.text;				
 				config.as3SearchPattern = as3patTi.text;
+				config.filenameSearchPattern = filenamePatTi.text;
 				
 				config.addBlankLine = blankLineCB.selected;
 				
@@ -58,43 +59,50 @@
 				text="Regular expressions used for searching for strings in your source files. You may want to edit them, in particular to add new MXML attributes to look for. Modify them at your own risk, but note you can always switch back to the default values." 
 				right="35" left="10" height="45"/>
 		
-			<mx:Label x="10" y="91" text="MXML search"/>
-			<mx:TextInput id="mxmlPatTi" y="89" 
-				text="{config.mxmlSearchPattern}" left="94" right="54"/>
-				
-			<mx:Label x="10" y="117" text="AS3 search"/>
-			<mx:TextInput id="as3patTi" y="115" 
-				text="{config.as3SearchPattern}" left="94" right="54"/>
+			<mx:Form y="91" left="10" right="35">
+				<mx:FormItem label="MXML search">
+					<mx:TextInput id="mxmlPatTi" width="390"
+						text="{config.mxmlSearchPattern}"/>
+				</mx:FormItem>
+				<mx:FormItem label="AS3 search">
+					<mx:TextInput id="as3patTi" width="390"
+						text="{config.as3SearchPattern}"/>
+				</mx:FormItem>
+				<mx:FormItem label="File name">
+					<mx:TextInput id="filenamePatTi" width="390"
+								  text="{config.filenameSearchPattern}"/>
+				</mx:FormItem>
+			</mx:Form>
 			
-			<mx:Button y="145" label="Switch back to defaults"
+			<mx:Button y="194" label="Switch back to defaults"
 				click=" config.defaultPatterns();" right="92"/>
 
-			<mx:Label x="10" y="280" 
+			<mx:Label x="10" y="329" 
 				text="Default code replacement patterns used during code extraction" 
 				fontWeight="bold"/>
 
-			<mx:Form y="321" left="10" right="35">
+			<mx:Form y="342" left="10" right="35">
 				<mx:FormItem label="AS3" >
+					<mx:TextInput width="390" id="replaceAS3Ti"
+						text="{ config.replaceAS3}"/>
 				</mx:FormItem>
 				<mx:FormItem label="MXML">
+					<mx:TextInput width="390" id="replaceMXMLTi"
+						text="{ config.replaceMxml}"/>
 				</mx:FormItem>
 				<mx:FormItem label="AS3 in MXML">
+					<mx:TextInput width="390" id="replaceAS3InMXMLTi"
+						text="{ config.replaceAS3inMXML}"/>
 				</mx:FormItem>
 			</mx:Form>
-			<mx:Button y="424" label="Switch back to defaults" right="92"
+			<mx:Button y="445" label="Switch back to defaults" right="92"
 				click=" config.defaultReplacements();"/>
-			<mx:HRule y="270" left="10" right="35"/>
-			<mx:HRule y="186" left="10" right="35"/>
-			<mx:Label x="10" y="196" text="Key naming" fontWeight="bold"/>
-			<mx:CheckBox x="10" y="222" id="prefixKeyCB"
+			<mx:HRule y="319" left="10" right="35"/>
+			<mx:HRule y="235" left="10" right="35"/>
+			<mx:Label x="10" y="245" text="Key naming" fontWeight="bold"/>
+			<mx:CheckBox x="10" y="271" id="prefixKeyCB"
 				label="Always prefix key names with the currently extracted file name"
 				selected="{ config.useKeyPrefix}"/>
-			<mx:TextInput width="390" id="replaceAS3Ti"
-				text="{ config.replaceAS3}" x="115" y="322"/>
-			<mx:TextInput width="390" id="replaceMXMLTi"
-				text="{ config.replaceMxml}" x="115" y="350"/>
-			<mx:TextInput width="390" id="replaceAS3InMXMLTi"
-				text="{ config.replaceAS3inMXML}" x="115" y="378"/>
 		
 		</mx:Canvas>		
 
