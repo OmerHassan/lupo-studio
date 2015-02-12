@@ -121,7 +121,11 @@ package com.dehats.lupomgr.presentation
 			var n:int = pList.length
 			for ( var i:int=0 ; i < n ; i++)
 			{
-				fileDescList.push( new ExtractableSource(pList[i], project.src_directory) );
+				var source:ExtractableSource = new ExtractableSource(pList[i], project.src_directory);
+				source.init();
+				
+				if(source.searchResult && source.searchResult.length>0 && source.searchIndex<source.searchResult.length)
+					fileDescList.push(source);
 			}	
 					
 			setSourceFile( fileDescList[0] );
