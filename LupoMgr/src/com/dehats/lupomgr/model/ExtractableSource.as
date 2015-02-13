@@ -26,7 +26,7 @@ package com.dehats.lupomgr.model
 		// get strings with quotes and allow escaping chars
 		public static const DEFAULT_CODE_SEARCH:RegExp=/"(?:[^"\\]|\\.)*"/gi;
 		// get everything
-		public static const DEFAULT_FILENAME_SEARCH:RegExp = /.*/;
+		public static const DEFAULT_FILENAME_SEARCH:RegExp = /\w+\.(?:as|mxml)/;
 
 		public static var MXML_SEARCH:RegExp;
 		public static var CODE_SEARCH:RegExp;
